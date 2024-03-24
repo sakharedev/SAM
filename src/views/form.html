@@ -1,0 +1,116 @@
+<title>Pre-register Visitor</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .form-container {
+        width: 300px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 10px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type="text"], input[type="email"], input[type="tel"] {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <form id="pre-register-form">
+        <div class="form-group">
+          <label for="location">Location:</label>
+          <input type="text" id="location" name="location" value="Pitney Bowes Noida" readonly>
+        </div>
+        <div class="form-group">
+          <label for="visitorType">Visitor Type:</label>
+          <input type="text" id="visitorType" name="visitorType" value="Facial Sign in" readonly>
+        </div>
+        <div class="form-group">
+          <label for="site">Site:</label>
+          <input type="text" id="site" name="site" value="Noida site" readonly>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone:</label>
+          <input type="tel" id="phone" name="phone" pattern="^\+\d{1,3} \d{1,10}$" required>
+        </div>
+        <div class="form-group">
+          <label for="company">Company:</label>
+          <input type="text" id="company" name="company">
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Submit">
+        </div>
+      </form>
+    </div>
+    <script>
+      const form = document.getElementById('pre-register-form');
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const formDataObj = Object.fromEntries(formData.entries());
+
+        try {
+          const response = await fetch('https://example.com/pre-register', {
+            method: 'POST',
+            body: JSON.stringify(formDataObj),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+
+          if (!response.ok) {
+            throw new Error('Failed to pre-register visitor');
+          }
+
+          console.log('Visitor pre-registered successfully');
+        } catch (error) {
+          console.error(error);
+        }
+      });
+      microsoftTemas.appInitialization.notifySucces();
+    </script>
+    <title>Microsoft Outlook Tab</title>
+  </head>

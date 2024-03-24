@@ -1,0 +1,53 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/static/styles/custom.css" />
+    <script
+      src="https://res.cdn.office.net/teams-js/2.17.0/js/MicrosoftTeams.min.js"
+      integrity="sha384-xp55t/129OsN192JZYLP0rGhzjCF9aYtjY0LVtXvolkDrBe4Jchylp56NrUYJ4S2"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <script src="/static/scripts/teamsapp.js"></script>
+    <title>Pre-register Visitor</title>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="container">
+        <div class="title"><h1>Pre-register a Visitor</h1></div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Site-Name</span>
+                    <input type="text" placeholder="Enter Site-Name" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Visitor Type</span>
+                    <input type="text" placeholder="Enter Visitor Type" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Full Name</span>
+                    <input type="text" placeholder="Enter name of the Visitor" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Email</span>
+                    <input type="text" placeholder="Enter visitor Mail-ID" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Phone Number</span>
+                    <input type="text" placeholder="Enter visitor Phone Number" required>
+                </div>
+            </div>
+            <div class="button">
+                <input type="submit" value="Pre-register">
+            </div>
+        </form>
+    </div>
+
+
+    <script type="text/javascript">
+      microsoftTeams.appInitialization.notifySuccess();
+    </script>
+  </body>
+</html>
