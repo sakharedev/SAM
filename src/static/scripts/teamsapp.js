@@ -1,5 +1,5 @@
 (function () {
-  "use strict";
+  'use strict';
 
   // Call the initialize API first
   microsoftTeams.app.initialize().then(function () {
@@ -11,8 +11,9 @@
   });
 
   function updateHubState(hubName) {
-    if (hubName) {
-      document.getElementById("hubState").innerHTML = "in " + hubName;
+    const hubStateElement = document.getElementById('hubState');
+    if (hubName && hubStateElement) {
+      hubStateElement.innerHTML = `in ${hubName}`;
     }
   }
 })();

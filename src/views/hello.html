@@ -16,27 +16,27 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div class="container">
         <div class="title"><h1>Pre-register a Visitor</h1></div>
-        <form action="#">
+        <form id="form">
             <div class="user-details">
                 <div class="input-box">
                     <span class="details">Site-Name</span>
-                    <input type="text" placeholder="Enter Site-Name" required>
+                    <input type="text" placeholder="Enter Site-Name" id="site-name" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Visitor Type</span>
-                    <input type="text" placeholder="Enter Visitor Type" required>
+                    <input type="text" placeholder="Enter Visitor Type" id="type" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Full Name</span>
-                    <input type="text" placeholder="Enter name of the Visitor" required>
+                    <input type="text" placeholder="Enter name of the Visitor" id="name" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Email</span>
-                    <input type="text" placeholder="Enter visitor Mail-ID" required>
+                    <input name="name" type="text" placeholder="Enter visitor Mail-ID" id="e-mail" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Phone Number</span>
-                    <input type="text" placeholder="Enter visitor Phone Number" required>
+                    <input type="text" placeholder="Enter visitor Phone Number" id="Number" required>
                 </div>
             </div>
             <div class="button">
@@ -48,6 +48,56 @@
 
     <script type="text/javascript">
       microsoftTeams.appInitialization.notifySuccess();
-    </script>
+      var form = document.getElementById('form');
+  
+      form.addEventListener('submit', function (event) {
+          event.preventDefault();
+  
+          var name = document.getElementById('name').value;
+          var mail = document.getElementById('e-mail').value;
+          var site = document.getElementById('site-name').value;
+  
+          // Constructing the email subject and body
+          var subject = "You have been pre-registered at " + site;
+          var body = "Hello " + name + ",\n\n";
+          body += "You have been pre-registered at " + site + ".\n\n";
+          body += "Thank you for your registration.\n\n";
+          body += "Best regards,\n";
+          body += "Your Organization";
+  
+          const requestBody = JSON.stringify({
+    message: {
+        subject: subject,
+        body: {
+            contentType: "Text",
+            content: body
+        },
+        toRecipients: [
+            {
+                emailAddress: {
+                    address: mail
+                }
+            }
+        ]
+    }
+});
+
+const requestOptions = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer EwBoA8l6BAAUTTy6dbu0OLf3Lzl3R/vfUXxq8g8AAVY4fjTfLU4yvtwwEUZrhho6VTHEGb1H/q15nlQbejQhhzdcYFZm6KwkIhH5pHQlBHOaJl9SPCNQq08uv7AwMkGb0HgMm486330Rq9JuOYCY2XX8T+xeIEeZyRReugRzDy+xYLTESN8B9YvlSp2Y0oozAnCqSJrLathDYCjt3NqzLWpMV5ya2yX5axXtDs/l3dH6wrcurM8C2f28Q5zDrDMrcPIr31bDwac7NnxezO3dABVsfD+2U+ehKcbgIxOEb/NE+tMHbz+Jt4VCSKypLxPbZKiPp1qKSa9eOU/lchfBNf5Y5C/u3hHs5hZOuIkARZMpyo46tDHPXBKq746OQ90DZgAACLcEt/MyJANdOAKYBh3X3Fz3pW13nUmdJ+s+qorS9OX+hq9a2YpmEkLNwqrZ+j8Moftz8ktzVBCS2zq5VtWNdFGD1wxVCWX9Y9onhA/dQiBNGtOJgTA1urSR3yoXh0vCmeB9Z4bJi6fzDNmrmp4NYFzFEBDokwFnAhvpjSpC5nchnhilj0QzjSiliOUue7lefym7URokImhJutrGthmhahGSwvdXyFT0U/WB+y8I7b3RViKn48hYEp8GD1T4QbolS8PRpLKoBsodfk5HLHGtNMdn998QNxLX3IbRRW94rML6F7Y3FuSIh/8pBIvfjO91qQ6qh1QhU5oesqluNAPzFzgHXoYO3VwAAK8Gde0AUqRe+XdL61bYZu3qx+1ao1D2IxAPV7NIQKNHfdHPKmy8BlB0/QB6YEEyI7HIQ/7zn36OdVLvpeif85w0hTvFzZNbmtfY+DB21feR6MQYvHFvKF7k+se7mXRTm8SOQwQpkxc+cwTOdXqH2Fg2Xlm9kWbWxNhf4rrnio/+hUL1JtHES7CKj2cnhAkOdEcXm7WqozDkG28iirm3eO3xs2FRQ0dvpd3pB5sgRK0/Qb5IbypvI6N1LlYFOQciNAzsIl7So4PHOtdf9HjXOMxuGlZCsR78g5+y4vl3D2MZHLjYYy7emCBbTRUqzNniEXX5xK0fZr/busNNnTbg52HN0zCOptvcqsaLhFuvubLspxAgjxhggvbbMWLMUbdB1m7rQ4WAUo2O1940at5BbdyB152rrj+AgT8fggI='
+    },
+    body: requestBody
+};
+  
+          fetch('https://graph.microsoft.com/v1.0/me/sendMail', requestOptions)
+              .then((response) => response.text())
+              .then((result) => console.log(result))
+              .catch((error) => console.error(error));
+      });
+  
+  </script>
+  
   </body>
 </html>
