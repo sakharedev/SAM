@@ -9,10 +9,9 @@
       integrity="sha384-xp55t/129OsN192JZYLP0rGhzjCF9aYtjY0LVtXvolkDrBe4Jchylp56NrUYJ4S2"
       crossorigin="anonymous"
     ></script>
-    <!-- <link rel="stylesheet" href="style.css"> -->
     <script src="/static/scripts/teamsapp.js"></script>
     <title>Pre-register Visitor</title>
-  <body>
+    <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div class="container">
         <div class="title"><h1>Pre-register a Visitor</h1></div>
@@ -47,54 +46,56 @@
 
 
     <script type="text/javascript">
-      microsoftTeams.appInitialization.notifySuccess();
-      var form = document.getElementById('form');
+        microsoftTeams.appInitialization.notifySuccess();
+        var form = document.getElementById('form');
   
-      form.addEventListener('submit', function (event) {
-          event.preventDefault();
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
   
-          var name = document.getElementById('name').value;
-          var mail = document.getElementById('e-mail').value;
-          var site = document.getElementById('site-name').value;
-  
-          // Constructing the email subject and body
-          var subject = "You have been pre-registered at " + site;
-          var body = "Hello " + name + ",\n\n";
-          body += "You have been pre-registered at " + site + ".\n\n";
-          body += "Best regards,\n";
-          body += "Pitney Bowes";
-  
-          const requestBody = JSON.stringify({
-    message: {
-        subject: subject,
-        body: {
-            contentType: "Text",
-            content: body
-        },
-        toRecipients: [
-            {
-                emailAddress: {
-                    address: mail
-                }
-            }
-        ]
-    }
-});
+            var name = document.getElementById('name').value;
+            var mail = document.getElementById('e-mail').value;
+            var site = document.getElementById('site-name').value;
 
-const requestOptions = {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'EwBoA8l6BAAUTTy6dbu0OLf3Lzl3R/vfUXxq8g8AASPi1Yo501wYvk0YSnXDvvA9mP2siJl2G+UyXRetB4ugFl/uGrnGJQ3T45tUrPU9g/3H5HjHeN9C+hcbCCkyWgGOHWHYglu/SkHYVQKC/zi16MiD/29mYg8LXZ9fsg+O6aHUxAU/NvVNxW4P7siBNIAjwURFlL1RbTqkCIPXbZYbVpPtpAVriiBUJIOCektd8/R1+MW6gSZbgDQfPvr8WLUiEzBWbvuhnUjY4OIr51QnJWZYEwNx+rHmK/TIZtNgImu7wIiNDdgQXqD8OYhIJNAOuh+DMgAWsBrvACGl8DTdJUBfzuLmlMkmMkzFtNsXSJ8JSm855wYC8gQp6613U3YDZgAACD63t3lVbN0hOAK0HWSmHXla0gdMLgkuCgWfxaS43SdKwdAAoWkqShiEEHaMpjKRdqTYoz2hG7SYZnfdHVJM6jn1J0B/OmERHeuquJmEUe+RDOfnBSuCnC/P7TTE6bUBy5ZOvy37hWzBW3uF1aP4E2HCFoeN8ThpgExfqAaJdLIxNGnC+HBDJOCEMBR37CleyxS6LcKWoB7lKDhBbXn2nPCVadGtImiHdTVYCXuIhRbFsgAIAAGaIKzpVbL8uZXdcI4kG/UTxr3NkJz5I2sIPu1r1YH4Q7pbVddrS1eWOOcD6+Rcu149kjPGvHXB6zZ7p4om21gZ2rT+lm/Zoic05XHxxxTFDx6ucIcmFeKMzezxehbaHOIZoLRzfVCZ4TbyYdglde4ERBQWtwfI0q1G8bSQEEP5NZiLh2Ius6qYqstocdTPRvMWpn3IGviERcs3voXOSWJ6pH8IqGpYZzf0BJvI9SWl1XxWpjmYOmQV6rkrXkz00ThDv0AFG9zzRK4h6dCLCR2UNvGe9G2+bT5pwVwXQ3mAH1esWhj1JK5YRNWYO7/XJ0m1s8TJ8bbwQY/v14iFFSPW6qwRspeStOrjGNkfAMT5rFcNz/gHn4ChgjTz8z1t1ARyePDTj+5BhLkyvvcPRMi2S7cDgEYKKQym2ODRgGhMrz7sd5gsCZxiUK92ELCd4NlpfF/NvIbFJ8zVo6uFhao40QuQ1hAWDgHAfFNW2O/MvPziZA9eg3+lL4Zi8Z0u3njKaq/AioZtrHIAlEvIggI='
-    },
-    body: requestBody
-};
+            const data = {
+                "name": name,
+                "email": mail,
+                "estimatedVisitDateTime": "2024-04-20T03:30:00.000Z",
+                "host": null,
+                "phone": null,
+                "company": null,
+                "comments": "",
+                "capturePhoto": false,
+                "isdCode": "+44",
+                "documents": {
+                    "fields": [],
+                    "notifyVisitor": false
+                },
+                "healthAndSafety": {
+                    "fields": []
+                },
+                "visitorID": null,
+                "locID": "pxpe3Ya5EGk",
+                "locationName": site,
+                "siteID": "660gRXjNJLq",
+                "timeZoneOffset": -330,
+                "visitorTypeID": "B8rLmnK86E8VE4x",
+                "countryCode": "GB",
+                "piFieldsEdited": false
+            };
+
+
   
-          fetch('https://graph.microsoft.com/v1.0/me/sendMail', requestOptions)
-              .then((response) => response.text())
-              .then((result) => console.log(result))
-              .catch((error) => console.error(error));
-      });
+            fetch('http://localhost:3000', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-form-urlencoded'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.text())
+            .then(data => console.log(data))
+            .catch((error) => console.error('Error:', error));
+        });
   
   </script>
   
