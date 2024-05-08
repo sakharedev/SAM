@@ -17,7 +17,7 @@ app.post('/', async (req, res) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}` // Replace with your actual token
+                'Authorization': `Bearer ${token}` 
             },
             body: JSON.stringify(data)
         });

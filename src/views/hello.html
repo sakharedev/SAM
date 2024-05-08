@@ -54,61 +54,61 @@
     <script type="text/javascript">
         microsoftTeams.appInitialization.notifySuccess();
         document.querySelector('form').addEventListener('submit', function (event) {
-        event.preventDefault();
-        var datetime = new Date(document.querySelector('.datetime').value).toISOString();
+            event.preventDefault();
+            var datetime = new Date(document.querySelector('.datetime').value).toISOString();
 
-        var name = document.getElementById('name').value;
-        var mail = document.getElementById('e-mail').value;
-        var site = document.getElementById('site-name').value;
-        var time = new Date(document.getElementById('datetime').value).toISOString();
-        var number = document.getElementById('number').value;
-        var visitorType = document.getElementById('type').value;
+            var name = document.getElementById('name').value;
+            var mail = document.getElementById('e-mail').value;
+            var site = document.getElementById('site-name').value;
+            var time = new Date(document.getElementById('datetime').value).toISOString();
+            var number = document.getElementById('number').value;
+            var visitorType = document.getElementById('type').value;
 
-        
-        console.log(name);
-        console.log(mail);
-        console.log(number);
-        console.log(datetime);
-        console.log(site);
-        console.log(visitorType);
+            
+            console.log(name);
+            console.log(mail);
+            console.log(number);
+            console.log(datetime);
+            console.log(site);
+            console.log(visitorType);
 
-        var data = {
-            "name": name,
-            "email": mail,
-            "estimatedVisitDateTime": datetime,
-            "host": null,
-            "phone": number,
-            "company": null,
-            "comments": "",
-            "capturePhoto": false,
-            "isdCode": "+44",
-            "documents": {
-                "fields": [],
-                "notifyVisitor": false
-            },
-            healthAndSafety: {
-                fields: [],
-            },
-            visitorID: null,
-            locID: 'pxpe3Ya5EGk',
-            locationName: site,
-            siteID: '660gRXjNJLq',
-            timeZoneOffset: -330,
-            visitorTypeID: 'B8rLmnK86E8VE4x',
-            countryCode: 'GB',
-            piFieldsEdited: false,
-        }
+            var data = {
+                "name": name,
+                "email": mail,
+                "estimatedVisitDateTime": datetime,
+                "host": null,
+                "phone": number,
+                "company": null,
+                "comments": "",
+                "capturePhoto": false,
+                "isdCode": "+44",
+                "documents": {
+                    "fields": [],
+                    "notifyVisitor": false
+                },
+                healthAndSafety: {
+                    fields: [],
+                },
+                visitorID: null,
+                locID: 'pxpe3Ya5EGk',
+                locationName: site,
+                siteID: '660gRXjNJLq',
+                timeZoneOffset: -330,
+                visitorTypeID: 'B8rLmnK86E8VE4x',
+                countryCode: 'GB',
+                piFieldsEdited: false,
+            }
 
-        fetch('http://localhost:3000', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-            })
-            .then(response => response.text())
-            .then(data => console.log(data))
-            .catch((error) => console.error('Error:', error));
+            fetch('http://localhost:3000', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+                })
+                .then(response => response.text())
+                .then(data => console.log(data))
+                .catch((error) => console.error('Error:', error));
       });
     </script>
   
